@@ -1,17 +1,23 @@
 //1.- Importaciones
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react'; //Importacion de React y el hook useState
 
 // Crear componente en base a uno ya creado
-const Texto = (props) => {
-  const {children} = props;
+const Texto = () => {
+  const [contenido, setContenido] = useState('Hola Mundo'); // Cuando arranca el componente, se inicializa con 'Hola Mundo'
+  const actualizarTexto = () => {setContenido('State Modificado')};
   return (
-    <Text> {children} </Text>
+    <Text onPress={actualizarTexto}> {contenido} </Text>
   );
 }
 
 // 2.- Main
 export default function App() {
+
+const [titulo, setTitulo] = useState('PRESIONAME');
+const cambiarTitulo = () => {setTitulo('ME PRESIONASTE')};
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -20,7 +26,8 @@ export default function App() {
       <Texto> "Mundo" </Texto>
       <Texto> React Native</Texto>
 
-      <Button title='Presioname'></Button>
+      <Button title={titulo} onPress={cambiarTitulo}></Button>
+
     </View>
   );
 }
