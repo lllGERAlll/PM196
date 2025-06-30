@@ -6,7 +6,7 @@ import { View, Switch, StyleSheet, Text } from 'react-native';
 const App = () => {
   const [activo, setActivo] = useState(false);
 
-  const cambiarSwitch = () => {setActivo(previousState => !previousState)}
+  const cambiarSwitch = () => {setActivo(previousState => !previousState)} 
   return(
     <View style={styles.container}>
       <Text style={styles.label}>Activar Característica:</Text>
