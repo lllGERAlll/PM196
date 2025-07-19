@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
 import Home from './screens/home';
-import Profile from './screens/profile';
 import Settings from './screens/settings';
+import ProfileStack from './navigation/profileStack'; // Importa el stack
 
 const Tab = createBottomTabNavigator();
 
@@ -17,7 +17,7 @@ export default function App() {
           headerShown: false,
           tabBarIcon: ({ color, size }) => {
             let iconName;
-            
+
             if (route.name === 'Home') {
               iconName = 'home';
             } else if (route.name === 'Profile') {
@@ -25,6 +25,7 @@ export default function App() {
             } else if (route.name === 'Settings') {
               iconName = 'settings';
             }
+
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarActiveTintColor: '#007BFF',
@@ -36,7 +37,7 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen name="Profile" component={ProfileStack} />
         <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>
     </NavigationContainer>
